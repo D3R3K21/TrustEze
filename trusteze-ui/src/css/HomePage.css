@@ -111,7 +111,7 @@ tr:nth-child(even) {
       }
 
       .line {
-          flex-grow: 1;
+          flex-grow: 1 !important;
           height: 1px;
           background-color: var(--line-color); 
           margin-right: 10px;

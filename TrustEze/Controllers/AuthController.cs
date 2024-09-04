@@ -45,7 +45,7 @@ namespace TrustEze.Controllers
             if (httpResponseMessage.IsSuccessStatusCode)
             {
                 var json = JsonSerializer.Deserialize<object>(await httpResponseMessage.Content.ReadAsStringAsync());
-                return new JsonResult(json);
+                return new RedirectResult(string.Format(_options.FrontendRedirectURI, code));
             }
 
             return new BadRequestResult();
