@@ -12,11 +12,13 @@
     "http": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "launchUrl": "auth/login",
+      "launchBrowser": false,
+      "launchUrl": "swagger",
       "applicationUrl": "http://0.0.0.0:80",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "FRONTEND_REDIRECT_URI": "http://localhost:3000?code={0}",
+        "HOSTED_UI_URI": "https://trusteze.auth.us-east-1.amazoncognito.com/login?client_id=3gn8kb63bta2jmkjhcnhtnb4q0&response_type=code&scope=email+openid+phone&redirect_uri=http%3A%2F%2Flocalhost%3A80%2Fauth"
       }
     },
     "https": {

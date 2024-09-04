@@ -7,5 +7,6 @@
         public string CallbackUri { get; set; }
         public string CognitoUri { get; set; }
         public string HostedUIUri { get; set; }
+        public string FrontendRedirectURI { get; set; }
     }
 }

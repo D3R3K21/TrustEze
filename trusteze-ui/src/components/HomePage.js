@@ -52,8 +52,8 @@ function allowDarkMode() {
 
 function renderHomePage() {
   return (
-<div>
-
+<>
+//TODO:(drose) move header to own component
   <header class="header">
 
   </header>
@@ -128,25 +128,8 @@ function renderHomePage() {
       </div>
   </footer>
 
-</div>);
+</>);
 
 }
-// function createTable(data) {
-
-//   return (
-//     <table>
-//       <tr key={"header"}>
-//         <th>Id</th>
-//         <th>Street Name</th>
-//       </tr>
-//       {data.results.map((item) => (
-//         <tr key="123">
-//          <td> {item.id}</td>
-//          <td> {item.standardFields.streetName}</td>
-//         </tr>
-//       ))}
-//     </table>
-//   );
-// }
 
 export default HomePage;
