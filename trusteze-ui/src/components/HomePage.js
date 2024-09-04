@@ -1,8 +1,6 @@
 import '../css/HomePage.css';
 import React, { useState, useEffect } from 'react';
 
-
-
 function HomePage() {
   const [data, setData] = useState(null);
 
@@ -11,26 +9,49 @@ function HomePage() {
       .then(response => response.json())
       .then(json => setData(json))
       .catch(error => console.error(error));
+
+    // Initialize dark mode functionality
+    allowDarkMode();
   }, []);
 
   return (
     <div>
       {renderHomePage()}
-    {/* //   {data ? <pre>{createTable(data)}</pre> : 'Loading...'} */}
+      {/* {data ? <pre>{createTable(data)}</pre> : 'Loading...'} */}
     </div>
-
-    
   );
 }
+
 function allowDarkMode() {
+  // Get the toggle switch element
+  const toggleSwitch = document.getElementById('mode-toggle');
+  
+  // Check if the toggle switch exists
+  if (toggleSwitch) {
+    // Load initial mode from local storage or default to dark mode
+    const savedMode = localStorage.getItem('theme') || 'dark-mode';
+    document.body.classList.add(savedMode);
+    
+    // Update the checkbox based on the saved mode
+    toggleSwitch.checked = savedMode === 'light-mode';
 
-
+    // Toggle between dark and light modes
+    toggleSwitch.addEventListener('change', function () {
+      if (toggleSwitch.checked) {
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add('light-mode');
+        localStorage.setItem('theme', 'light-mode');  // Save mode to local storage
+      } else {
+        document.body.classList.remove('light-mode');
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark-mode');  // Save mode to local storage
+      }
+    });
+  }
 }
 
 function renderHomePage() {
-
-  allowDarkMode();
-return (
+  return (
 <div>
 
   <header class="header">
