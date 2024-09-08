@@ -34,11 +34,11 @@ function allowDarkMode() {
     document.body.classList.add(savedMode);
     
     // Update the checkbox based on the saved mode
-    toggleSwitch.checked = savedMode === 'light-mode';
+    toggleSwitch.checked = !(savedMode === 'light-mode');
 
     // Toggle between dark and light modes
     toggleSwitch.addEventListener('change', function () {
-      if (toggleSwitch.checked) {
+      if (!toggleSwitch.checked) {
         document.body.classList.remove('dark-mode');
         document.body.classList.add('light-mode');
         localStorage.setItem('theme', 'light-mode');  // Save mode to local storage
