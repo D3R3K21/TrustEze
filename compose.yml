@@ -1,24 +1,18 @@
 services:
   web-api:
     environment:
-
+      CLIENT_ID: $CLIENT_ID
+      CLIENT_SECRET: $CLIENT_SECRET
       COGNITO_URI: "https://trusteze.auth.us-east-1.amazoncognito.com/oauth2/token"
-      CALLBACK_URI: "http://localhost:80/auth"
-    image: trusteze
+      CALLBACK_URI: $CALLBACK_URI
+      HOSTED_UI_URI: $HOSTED_UI_URI
+      ASPNETCORE_HTTPS_PORTS: 81
+      FRONTEND_REDIRECT_URI: $FRONTEND_REDIRECT_URI
+        #build: .
+    image: https-trusteze
     ports:
-      - 81:8080
-  # fe:
-    # environment:
-      # ACCEPT_EULA: "Y"
-      # SA_PASSWORD: example_123
-    # # mssql server image isn't available for arm64 architecture, so we use azure-sql instead
-    # image: mcr.microsoft.com/azure-sql-edge:1.0.4
-    # # If you really want to use MS SQL Server, uncomment the following line
-    # #image: mcr.microsoft.com/mssql/server
-    # restart: always
-    # healthcheck:
-        # test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P example_123 -Q 'SELECT 1' || exit 1"]
-        # interval: 10s
-        # retries: 10
-        # start_period: 10s
-        # timeout: 3s
+      - 443:81
+  web-ui:
+    environment:
+      CLIENT_ID: $CLIENT_ID
+    build: ./trusteze-ui/
